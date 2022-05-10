@@ -129,6 +129,11 @@
         mappings used by <code>ServletResponse.setLocale()</code> as it
         caused regressions for applications using UTF-8. (markt)
       </add>
+      <add>
+        Provide a property source that sources values from Kubernetes service
+        bindings. Pull request <pr>512</pr> provided by Sumit Kulhadia and
+        Gareth Evans. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -168,6 +173,12 @@
         the internal, in memory key store. Based on <pr>511</pr>.
         (jfclere/markt)
       </add>
+      <fix>
+        Remove the <code>prestartminSpareThreads</code> attribute of the
+        <code>StandardThreadExecutor</code> since all core threads are always
+        started by default making this attribute meaningless. Pull request
+        <pr>510</pr> provided by Aooohan. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
@@ -191,6 +202,12 @@
         <bug>66008</bug>: In the documentation web application, clarify the
         recommendation for the use the <code>trimSpaces</code> option for Jasper
         in production environments. (markt)
+      </fix>
+      <fix>
+        Update the documentation web application to state that the
+        <code>EncryptInterceptor</code> does not provide sufficient protection
+        to run Tomcat clustering over an untrusted network. This is
+        CVE-2022-29885. (markt)
       </fix>
     </changelog>
   </subsection>
