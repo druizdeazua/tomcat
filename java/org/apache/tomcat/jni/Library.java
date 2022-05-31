@@ -25,7 +25,7 @@ import java.io.File;
 public final class Library {
 
     /* Default library names */
-    private static final String [] NAMES = {"tcnative-1", "libtcnative-1"};
+    private static final String [] NAMES = {"tcnative-2", "libtcnative-2", "tcnative-1", "libtcnative-1"};
     /*
      * A handle to the unique Library singleton instance.
      */
@@ -185,6 +185,7 @@ public final class Library {
     public static int APR_MMAP_LIMIT;
 
     /* return global TCN's APR pool */
+    @Deprecated
     public static native long globalPool();
 
     /**
@@ -254,41 +255,4 @@ public final class Library {
         }
         return initialize();
     }
-
-    /**
-     * Calls System.load(filename). System.load() associates the
-     * loaded library with the class loader of the class that called
-     * the System method. A native library may not be loaded by more
-     * than one class loader, so calling the System method from a class that
-     * was loaded by a Webapp class loader will make it impossible for
-     * other Webapps to load it.
-     *
-     * Using this method will load the native library via a shared class
-     * loader (typically the Common class loader, but may vary in some
-     * configurations), so that it can be loaded by multiple Webapps.
-     *
-     * @param filename - absolute path of the native library
-     */
-    public static void load(String filename){
-        System.load(filename);
-    }
-
-    /**
-     * Calls System.loadLibrary(libname). System.loadLibrary() associates the
-     * loaded library with the class loader of the class that called
-     * the System method. A native library may not be loaded by more
-     * than one class loader, so calling the System method from a class that
-     * was loaded by a Webapp class loader will make it impossible for
-     * other Webapps to load it.
-     *
-     * Using this method will load the native library via a shared class
-     * loader (typically the Common class loader, but may vary in some
-     * configurations), so that it can be loaded by multiple Webapps.
-     *
-     * @param libname - the name of the native library
-     */
-    public static void loadLibrary(String libname){
-        System.loadLibrary(libname);
-    }
-
 }

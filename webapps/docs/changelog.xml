@@ -129,6 +129,13 @@
         <code>RemoteIPValve</code> persist after the request is put into
         asynchronous mode. (markt)
       </fix>
+      <add>
+        Include the major version in the recommended version used for Tomcat
+        Native with the <code>AprLifecycleListener</code>. (markt)
+      </add>
+      <scode>
+        Remove the reporting of the unused APR feature flags. (markt)
+      </scode>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -157,6 +164,11 @@
         private keys in the previous release that broke support for unencrypted
         PKCS#1 formatted private keys. (jfclere/markt)
       </add>
+      <update>
+        Remove support for NPN when using the Tomcat Native Connector as NPN was
+        never standardised and browser support for NPN was removed several years
+        ago. (markt)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Jasper">
