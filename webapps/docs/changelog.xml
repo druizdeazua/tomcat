@@ -119,6 +119,15 @@
         Implement the clarification in RFC 9110 that the units in HTTP range
         specifiers are case insensitive. (markt)
       </fix>
+      <fix>
+        Properly-escape role and group information when writing
+        MemoryUserDatabase to an XML file. (schultz)
+      </fix>
+      <fix>
+        Move control of XML-export logic from individual support classes into
+        MemoryUserDatabase.save(). Deprecate and discontinue use of MemoryUser,
+        MemoryRole, and MemoryGroup classes. (schultz)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -134,6 +143,19 @@
       <fix>
         Ensure HTTP/2 requests that include connection specific headers are
         rejected. (markt)
+      </fix>
+      <fix>
+        When processing HTTP/2 requests, allow a <code>host</code> header to be
+        used in place of an <code>:authority</code> header. (markt)
+      </fix>
+      <fix>
+        When processing HTTP/2 requests, allow a <code>host</code> header and an
+        <code>:authority</code> header to  be present providing the are
+        consistent. (markt)
+      </fix>
+      <fix>
+        When processing HTTP/2 requests, reject requests containing multiple
+        <code>host</code> headers. (markt)
       </fix>
     </changelog>
   </subsection>
