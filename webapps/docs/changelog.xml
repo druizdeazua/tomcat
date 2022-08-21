@@ -128,6 +128,15 @@
         MemoryUserDatabase.save(). Deprecate and discontinue use of MemoryUser,
         MemoryRole, and MemoryGroup classes. (schultz)
       </fix>
+      <fix>
+        <bug>66184</bug>: Ensure that JULI root loggers have a default level of
+        <code>INFO</code>. Pull request <pr>533</pr> provided by Piotr P.
+        Karwasz. (markt)
+      </fix>
+      <fix>
+        Improve handling of stack overflow errors when parsing SSI expressions.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -156,6 +165,25 @@
       <fix>
         When processing HTTP/2 requests, reject requests containing multiple
         <code>host</code> headers. (markt)
+      </fix>
+      <fix>
+        Make parsing of invalid filename directives in
+        <code>Content-Disposition</code> headers more robust. Invalid filename
+        directives will now be ignored rather than triggering a 500 response.
+        (markt)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        Improve handling of stack overflow errors when parsing EL expressions.
+        (markt)
+      </fix>
+      <fix>
+        Correct parsing of integer and floating point literals in EL expressions
+        so that larger values are correctly parsed to <code>BigInteger</code>
+        and <code>BigDecimal</code> respectively. (markt)
       </fix>
     </changelog>
   </subsection>
