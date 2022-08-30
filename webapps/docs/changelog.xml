@@ -148,6 +148,21 @@
         session persistence and restoration occurs during the authentication
         process. (markt)
       </fix>
+      <fix>
+        <bug>66233</bug>: Include an error message when sending a 400 response
+        because a request has too many cookies. (markt)
+      </fix>
+      <fix>
+        When web application deployment fails due to JARs with duplicate
+        fragment names, improve the error message by listing the JARs that
+        contain the duplicates. Based on pull request <pr>535</pr> by Mads
+        Rolsdorph. (markt)
+      </fix>
+      <fix>
+        Replace logging thread for JULI's <code>AsyncFileHandler</code> with an
+        executor to protect against failure of the logging thread. Based on pull
+        request <pr>545</pr> by Piotr P. Karwasz. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -183,6 +198,15 @@
         directives will now be ignored rather than triggering a 500 response.
         (markt)
       </fix>
+      <fix>
+        <bug>66194</bug>: Log HTTP/2 stream closures (usually caused by client
+        errors) via a <code>UserDataHelper</code> to broadly align it with the
+        behaviour of HTTP/1.1 for parsing issues and exceeding limits. (markt)
+      </fix>
+      <fix>
+        <bug>66240</bug>: Avoid int overflow when parsing octets by limiting
+        the maximum value to 255. Based on a PR <pr>548</pr> by Stefan Mayr. (lihan)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
@@ -195,6 +219,25 @@
         Correct parsing of integer and floating point literals in EL expressions
         so that larger values are correctly parsed to <code>BigInteger</code>
         and <code>BigDecimal</code> respectively. (markt)
+      </fix>
+      <fix>
+        <bug>66235</bug>: Fix various issues with the bean resolver used for
+        Graal. (remm)
+      </fix>
+      <fix>
+        Improve the performance of the <code>ImportHandler</code> in the
+        Expression Language implementation. This removes a previous optimisation
+        that is now detrimental rather than helpful. Pull request <pr>547</pr>
+        provided by rmannibucau. (markt)
+      </fix>
+      <fix>
+        Improve handling of EL error messages so instances of Number are not
+        formatted in unexpected ways. (markt)
+      </fix>
+      <fix>
+        Switch to using ELException rather than IllegalArgumentException when a
+        type conversion fails during an EL arithmetic operation. This is an EL
+        error so ELException seems more appropriate. (markt)
       </fix>
     </changelog>
   </subsection>
