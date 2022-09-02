@@ -204,8 +204,19 @@
         behaviour of HTTP/1.1 for parsing issues and exceeding limits. (markt)
       </fix>
       <fix>
+        <bug>66196</bug>: Align HTTP/1.1 with HTTP/2 and throw an exception when
+        attempting to commit a response with an header value that includes one
+        or more characters with a code point above 255. (markt)
+      </fix>
+      <fix>
+        <bug>66236</bug>: Implement support for the special values zero and
+        minus one when configuring <code>maxSavePostSize</code> for a Connector
+        when used in conjunction with TLS renegotiation. (markt)
+      </fix>
+      <fix>
         <bug>66240</bug>: Avoid int overflow when parsing octets by limiting
-        the maximum value to 255. Based on a PR <pr>548</pr> by Stefan Mayr. (lihan)
+        the maximum value to 255. Based on a PR <pr>548</pr> by Stefan Mayr.
+        (lihan)
       </fix>
     </changelog>
   </subsection>
@@ -239,6 +250,17 @@
         type conversion fails during an EL arithmetic operation. This is an EL
         error so ELException seems more appropriate. (markt)
       </fix>
+      <fix>
+        Fix a bug in <code>MethodExpression</code> handling that triggered an
+        error when invoking a static method on an instance of the class rather
+        than directly on the class. (markt)
+      </fix>
+      <fix>
+        Use <code>BigInteger.remainder()</code> rather than
+        <code>BigInteger.mod()</code> when performing the modulus operation for
+        instances of <code>BigInteger</code> as part of an EL expression.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
@@ -261,6 +283,34 @@
         Ensure that zip archives use UTC for file modification times to ensure
         repeatable builds across time zones. (markt)
       </fix>
+      <add>
+        Improvements to Chinese translations. (lihan)
+      </add>
+      <add>
+        Improvements to Czech translations. (markt)
+      </add>
+      <add>
+        Improvements to French translations. (remm)
+      </add>
+      <add>
+        Improvements to German translations. (markt)
+      </add>
+      <add>
+        Improvements to Japanese translations. Contributed by tak7iji and
+        Shirayuking. (markt)
+      </add>
+      <add>
+        Improvements to Korean translations. Contributed by 수현. (markt)
+      </add>
+      <add>
+        Improvements to Brazilian Portuguese translations. (markt)
+      </add>
+      <add>
+        Improvements to Russian translations. (markt)
+      </add>
+      <add>
+        Improvements to Spanish translations. (markt)
+      </add>
     </changelog>
   </subsection>
 </section>
