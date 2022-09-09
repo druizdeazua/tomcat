@@ -218,6 +218,11 @@
         the maximum value to 255. Based on a PR <pr>548</pr> by Stefan Mayr.
         (lihan)
       </fix>
+      <fix>
+        <pr>551</pr>: Avoid potential IndexOutOfBoundsException by fixing
+        incorrect check when matching HTTP/2 preface. Submitted by 刘文章.
+        (lihan)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
@@ -243,7 +248,7 @@
       </fix>
       <fix>
         Improve handling of EL error messages so instances of Number are not
-        formatted in unexpected ways. (markt)
+        formatted in unexpected ways. (markt/kkolinko)
       </fix>
       <fix>
         Switch to using ELException rather than IllegalArgumentException when a
@@ -275,6 +280,16 @@
         <bug>66120</bug>: Enable FORM authentication to work correctly if
         session failover occurs during the authentication process. (markt)
       </fix>
+    </changelog>
+  </subsection>
+  <subsection name="WebSocket">
+    <changelog>
+      <add>
+        <bug>62312</bug>: Add support for authenticating WebSocket clients with
+        an HTTP forward proxy when establishing a connection to a WebSocket
+        endpoint via a foward proxy that requires authentication. Based on a
+        patch provided by Joe Mokos. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Other">
