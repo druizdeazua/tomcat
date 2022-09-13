@@ -219,6 +219,11 @@
         (lihan)
       </fix>
       <fix>
+        <pr>550</pr>: Correctly handle case where a Servlet responds to a
+        request with an expectation with a 2xx response without reading the
+        request body. Pull request provided by Malay Shah. (markt)
+      </fix>
+      <fix>
         <pr>551</pr>: Avoid potential IndexOutOfBoundsException by fixing
         incorrect check when matching HTTP/2 preface. Submitted by 刘文章.
         (lihan)
@@ -287,7 +292,7 @@
       <add>
         <bug>62312</bug>: Add support for authenticating WebSocket clients with
         an HTTP forward proxy when establishing a connection to a WebSocket
-        endpoint via a foward proxy that requires authentication. Based on a
+        endpoint via a forward proxy that requires authentication. Based on a
         patch provided by Joe Mokos. (markt)
       </add>
     </changelog>
@@ -326,6 +331,10 @@
       <add>
         Improvements to Spanish translations. (markt)
       </add>
+      <update>
+        Update the Apache Tomcat migration tool for Jakarta EE library to 1.0.3.
+        (markt)
+      </update>
     </changelog>
   </subsection>
 </section>
