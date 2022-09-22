@@ -104,7 +104,32 @@
   They eventually become mixed with the numbered issues (i.e., numbered
   issues do not "pop up" wrt. others).
 -->
-<section name="Tomcat 10.1.0-M20 (markt)" rtext="in development">
+<section name="Tomcat 10.1.0-M21 (markt)" rtext="in development">
+  <subsection name="Coyote">
+    <changelog>
+      <update>
+        Update Panama OpenSSL code for the extensive Java 20 changes. (remm)
+      </update>
+    </changelog>
+  </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <add>
+        <bug>66203</bug>: Log an error message when the JSP compiler is unable
+        to create the output directory for the generated code. (markt)
+      </add>
+    </changelog>
+  </subsection>
+  <subsection name="Other">
+    <changelog>
+      <add>
+        Further automation to the build process to reduce the number of manual
+        steps that release managers must perform. (markt)
+      </add>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat 10.1.0-M20 (markt)" rtext="release in progress">
   <subsection name="Coyote">
     <changelog>
       <fix>
@@ -112,8 +137,16 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Other">
+    <changelog>
+      <update>
+        Update the Apache Tomcat migration tool for Jakarta EE library to 1.0.4.
+        (markt)
+      </update>
+    </changelog>
+  </subsection>
 </section>
-<section name="Tomcat 10.1.0-M19 (markt)" rtext="release in progress">
+<section name="Tomcat 10.1.0-M19 (markt)" rtext="not released">
   <subsection name="Coyote">
     <changelog>
       <fix>
