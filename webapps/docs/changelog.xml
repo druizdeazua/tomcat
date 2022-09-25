@@ -104,12 +104,18 @@
   They eventually become mixed with the numbered issues (i.e., numbered
   issues do not "pop up" wrt. others).
 -->
-<section name="Tomcat 10.1.0-M21 (markt)" rtext="in development">
+<section name="Tomcat 10.1.1 (markt)" rtext="in development">
+</section>
+<section name="Tomcat 10.1.0 (markt)" rtext="release in progress">
   <subsection name="Coyote">
     <changelog>
       <update>
         Update Panama OpenSSL code for the extensive Java 20 changes. (remm)
       </update>
+      <fix>
+        Fix a regression in refactoring for Hashtables which caused mbeans to
+        lose many of their attributes. (remm)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
@@ -129,7 +135,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 10.1.0-M20 (markt)" rtext="release in progress">
+<section name="Tomcat 10.1.0-M20 (markt)" rtext="not released">
   <subsection name="Coyote">
     <changelog>
       <fix>
