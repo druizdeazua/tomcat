@@ -104,9 +104,108 @@
   They eventually become mixed with the numbered issues (i.e., numbered
   issues do not "pop up" wrt. others).
 -->
-<section name="Tomcat 10.1.1 (markt)" rtext="in development">
+<section name="Tomcat 10.1.2 (markt)" rtext="in development">
 </section>
-<section name="Tomcat 10.1.0 (markt)" rtext="release in progress">
+<section name="Tomcat 10.1.1 (markt)" rtext="release in progress">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        Update the <code>RewriteValve</code> to perform pattern matching using
+        dotall mode to avoid unexpected behaviour if the URL includes encoded
+        line terminators. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <fix>
+        <bug>66276</bug>: Fix incorrect class cast when adding
+        a descendant of HTTP/2 streams. (lihan)
+      </fix>
+      <fix>
+        <bug>66281</bug>: Fix unexpected timeouts that may appear as client
+        disconnections when using HTTP/2 and NIO2. (markt)
+      </fix>
+      <fix>
+        Enforce the requirement of RFC 7230 onwards that a request with a
+        malformed <code>content-length</code> header should always be rejected
+        with a 400 response. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>66277</bug>: Fix regressions in refactoring from <code>Stack</code>
+        <code>ArrayDeque</code>.
+      </fix>
+      <add>
+        Add support for specifying Java 20 (with the value <code>20</code>) as
+        the compiler source and/or compiler target for JSP compilation. If used
+        with an Eclipse JDT compiler version that does not support these values,
+        a warning will be logged and the default will used.
+        (markt)
+      </add>
+    </changelog>
+  </subsection>
+  <subsection name="Web applications">
+    <changelog>
+      <fix>
+        Documentation. Document the <code>nonceRequestParameterName</code>
+        attribute for the <code>CsrfPreventionFilter</code>. Based on
+        <pr>553</pr> by Mert Ülkgün. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Other">
+    <changelog>
+      <update>
+        Update to the Eclipse JDT compiler 4.23. (markt)
+      </update>
+      <update>
+        Update Objenesis to 3.2. (markt)
+      </update>
+      <update>
+        Update UnboundID to 6.0.6. (markt)
+      </update>
+      <update>
+        Update Checkstyle to 10.3.4. (markt)
+      </update>
+      <update>
+        Update JaCoCo to 0.8.8. (markt)
+      </update>
+      <update>
+        Update SpotBugs to 4.7.2. (markt)
+      </update>
+      <update>
+        Update JSign to 4.2. (markt)
+      </update>
+      <update>
+        Update Derby to 10.16.1.1. (markt)
+      </update>
+      <add>
+        Improvements to Chinese translations. (markt)
+      </add>
+      <add>
+        Improvements to Czech translations. (markt)
+      </add>
+      <add>
+        Improvements to French translations. (remm)
+      </add>
+      <add>
+        Improvements to Japanese translations. Contributed by tak7iji and
+        Shirayuking. (markt)
+      </add>
+      <add>
+        Improvements to Korean translations. (markt)
+      </add>
+      <add>
+        Improvements to Spanish translations. (markt)
+      </add>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat 10.1.0 (markt)" rtext="2022-09-26">
   <subsection name="Coyote">
     <changelog>
       <update>
@@ -830,7 +929,7 @@
       </fix>
       <add>
          Remove the <code>WebappClassLoaderBase.getResources()</code> method as
-         it is not used and if something accidently exposes the class loader
+         it is not used and if something accidentally exposes the class loader
          this method can be used to gain access to Tomcat internals. (markt)
       </add>
     </changelog>
@@ -1529,7 +1628,7 @@
         getting the passord of a user. (remm)
       </fix>
       <docs>
-        Add Javadoc comment which listeners must be nested whithin
+        Add Javadoc comment which listeners must be nested within
         <code>Server</code> elements only. (michaelo)
       </docs>
       <add>
