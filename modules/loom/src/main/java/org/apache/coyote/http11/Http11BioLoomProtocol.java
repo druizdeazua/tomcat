@@ -16,42 +16,40 @@
  */
 package org.apache.coyote.http11;
 
+import java.net.Socket;
+
 import org.apache.coyote.Processor;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
-import org.apache.tomcat.util.net.Nio2Channel;
-import org.apache.tomcat.util.net.Nio2Endpoint;
+import org.apache.tomcat.util.net.BioLoomEndpoint;
 
+public class Http11BioLoomProtocol extends AbstractHttp11Protocol<Socket> {
 
-/**
- * HTTP/1.1 protocol implementation using NIO2.
- */
-public class Http11Nio2Protocol extends AbstractHttp11Protocol<Nio2Channel> {
+    private static final Log log = LogFactory.getLog(Http11BioLoomProtocol.class);
 
-    private static final Log log = LogFactory.getLog(Http11Nio2Protocol.class);
-
-
-    public Http11Nio2Protocol() {
-        super(new Nio2Endpoint());
+    public Http11BioLoomProtocol() {
+        super(new BioLoomEndpoint());
     }
 
 
     @Override
-    protected Log getLog() { return log; }
-
-
-    @Override
-    protected Processor createProcessor() {
-        return new Http11Processor(this, adapter);
+    protected Log getLog() {
+        return log;
     }
 
 
     @Override
     protected String getNamePrefix() {
         if (isSSLEnabled()) {
-            return "https-" + getSslImplementationShortName()+ "-nio2";
+            return "https-" + getSslImplementationShortName()+ "-bio-loom";
         } else {
-            return "http-nio2";
+            return "http-bio-loom";
         }
+    }
+
+
+    @Override
+    protected Processor createProcessor() {
+        return new Http11LoomProcessor(this, adapter);
     }
 }

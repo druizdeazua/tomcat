@@ -25,14 +25,13 @@
     </parent>
 
     <groupId>org.apache.tomcat</groupId>
-    <artifactId>tomcat-coyote-openssl-java17</artifactId>
-    <name>Apache Tomcat OpenSSL support for Java 17</name>
-    <description>OpenSSL support using the Panama JEP 412 API included in Java 17</description>
+    <artifactId>tomcat-coyote-loom</artifactId>
+    <name>Apache Tomcat support for Project Look</name>
+    <description>Project Loom support included in Java 19 early preview</description>
     <version>0.1-SNAPSHOT</version>
 
     <properties>
-        <tomcat.version>9.0.68</tomcat.version>
-        <project.build.outputTimestamp>2021-12-02T12:00:00Z</project.build.outputTimestamp>
+        <tomcat.version>11.0.0-M1-SNAPSHOT</tomcat.version>
     </properties>
 
     <scm>
@@ -78,11 +77,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>17</source>
-					<target>17</target>
+					<source>19</source>
+					<target>19</target>
 					<compilerArgs>
-						<arg>--add-modules</arg>
-						<arg>jdk.incubator.foreign</arg>
+						<arg>--enable-preview</arg>
 					</compilerArgs>
 				</configuration>
 			</plugin>
@@ -90,10 +88,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
-				    <source>17</source> 
+				    <source>19</source> 
 					<additionalJOptions>
-						<additionalJOption>--add-modules</additionalJOption>
-						<additionalJOption>jdk.incubator.foreign</additionalJOption>
+						<additionalJOption>--enable-preview</additionalJOption>
 					</additionalJOptions>
 				</configuration>
 			</plugin>
