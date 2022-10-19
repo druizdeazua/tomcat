@@ -52,8 +52,6 @@ import org.apache.jasper.TrimSpacesOption;
 import org.apache.jasper.compiler.Node.ChildInfoBase;
 import org.apache.jasper.compiler.Node.NamedAttribute;
 import org.apache.jasper.runtime.JspRuntimeLibrary;
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
 import org.xml.sax.Attributes;
 
 /**
@@ -78,8 +76,6 @@ import org.xml.sax.Attributes;
  */
 
 class Generator {
-
-    private final Log log = LogFactory.getLog(Generator.class); // must not be static
 
     private static final Class<?>[] OBJECT_CLASS = { Object.class };
 
@@ -757,14 +753,7 @@ class Generator {
         genPreambleMethods();
 
         // Now the service method
-        if (pageInfo.isThreadSafe()) {
-            out.printin("public void ");
-        } else {
-            // This is unlikely to perform well.
-            out.printin("public synchronized void ");
-            // As required by JSP 3.1, log a warning
-            log.warn(Localizer.getMessage("jsp.warning.isThreadSafe", ctxt.getJspFile()));
-        }
+        out.printin("public void ");
         out.print(serviceMethodName);
         out.println("(final jakarta.servlet.http.HttpServletRequest request, final jakarta.servlet.http.HttpServletResponse response)");
         out.pushIndent();
@@ -833,7 +822,7 @@ class Generator {
         out.println(");");
 
         if (ctxt.getOptions().isXpoweredBy()) {
-            out.printil("response.addHeader(\"X-Powered-By\", \"JSP/3.1\");");
+            out.printil("response.addHeader(\"X-Powered-By\", \"JSP/4.0\");");
         }
 
         out.printil("pageContext = _jspxFactory.getPageContext(this, request, response,");
@@ -1531,14 +1520,6 @@ class Generator {
                 out.printil("}");
             }
 
-            n.setEndJavaLine(out.getJavaLine());
-        }
-
-        @Override
-        public void visit(Node.PlugIn n) throws JasperException {
-
-            // As of JSP 3.1, jsp:plugin must not generate any output
-            n.setBeginJavaLine(out.getJavaLine());
             n.setEndJavaLine(out.getJavaLine());
         }
 
