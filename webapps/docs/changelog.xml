@@ -136,6 +136,10 @@
         on the <code>SystemLogHandler</code> which caught incorrect exception.
         (lihan)
       </fix>
+      <fix>
+        <bug>66338</bug>: Fix a regression that caused a nuance in refactoring
+        for <code>ErrorReportValve</code>. (lihan)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -145,6 +149,16 @@
         A single space rather than a single dash should be used to separate the
         day, month and year components to be compliant with RFC 6265. (markt)
       </fix>
+      <add>
+        Include the name of the current stream state in the error message when a
+        stream is cancelled due to an attempt to write to the stream when it is
+        in a state that does not permit writes. (markt)
+      </add>
+      <scode>
+        NIO writes never return -1 so refactor <code>CLOSED_NIO_CHANNEL</code>
+        not to do so and remove checks for this return value. Based on
+        <pr>562</pr> by tianshuang. (markt)
+      </scode>
     </changelog>
   </subsection>
   <subsection name="Jasper">
