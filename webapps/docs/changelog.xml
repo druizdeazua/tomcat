@@ -115,8 +115,12 @@
   </subsection>
   <subsection name="Catalina">
     <changelog>
+      <fix>
+        <bug>66175</bug>: Change the default character set used by the
+        <code>BasicAuthenticator</code> from ISO-8859-1 to UTF-8. (markt)
+      </fix>
       <add>
-        <bug>66029</bug>: Add a configuration option to allow bloom filters used
+        <bug>66209</bug>: Add a configuration option to allow bloom filters used
         to index JAR files to be retained for the lifetime of the web
         application. Prior to this addition, the indexes were always flushed by
         the periodic calls to <code>WebResourceRoot.gc()</code>. As part of this
@@ -152,6 +156,20 @@
         <code>HttpServletRequest.getTrailerFields()</code> and with the Servlet
         API provided by the Jakarta EE project. (markt)
       </fix>
+      <fix>
+        Refactor <code>WebappLoader</code> so it only has a runtime dependency
+        on the migration tool for Jakarta EE if configured to use the converter
+        as classes are loaded. (markt)
+      </fix>
+      <fix>
+        Improve the behavior of the credential handler attribute that is set in
+        the Servlet context so that it actually reflects what is used during
+        authentication. (remm)
+      </fix>
+      <add>
+        Add support for the new attribute for error dispatches
+        <code>jakarta.servlet.error.query_string</code>. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -180,6 +198,12 @@
         valid for the configured character set and throw an exception if not.
         (markt)
       </fix>
+      <fix>
+        When an HTTP/2 stream was reset, the current active stream count was not
+        reduced. If enough resets occurred on a connection, the current active
+        stream count limit was reached and no new streams could be created on
+        that connection. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
@@ -198,6 +222,28 @@
       <fix>
         <bug>66325</bug>: Fix concurrency issue in evaluation of expression
         language containing lambda expressions. (markt)
+      </fix>
+      <add>
+        Update the <code>ErrorData</code> class in the JSP API to align with the
+        recent changes in the Jakarta Pages specification to support the new
+        error dispatch attribute
+        <code>jakarta.servlet.error.query_string</code>.
+      </add>
+    </changelog>
+  </subsection>
+  <subsection name="Web applications">
+    <changelog>
+      <fix>
+        <bug>66348</bug>: Update the JARs listed in the class loader
+        documentation and note which ones are optional. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="jdbc-pool">
+    <changelog>
+      <fix>
+        <bug>66346</bug>: Ensure all JDBC pool JARs are reproducible. Pull
+        request <pr>566</pr> provided by John Neffenger. (markt)
       </fix>
     </changelog>
   </subsection>
@@ -243,6 +289,11 @@
         Update the packaged version of the Apache Tomcat Migration Tool for
         Jakarta EE to 1.0.5. (markt)
       </update>
+      <scode>
+        Refactor code base to replace use of URL constructors. While they are
+        deprecated in Java 20 onwards, the reasons for deprecation are valid for
+        all versions so move away from them now. (markt)
+      </scode>
     </changelog>
   </subsection>
 </section>

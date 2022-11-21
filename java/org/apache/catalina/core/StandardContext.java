@@ -5016,7 +5016,7 @@ public class StandardContext extends ContainerBase
                 getLogger();
 
                 Realm realm = getRealmInternal();
-                if(null != realm) {
+                if (null != realm) {
                     if (realm instanceof Lifecycle) {
                         ((Lifecycle) realm).start();
                     }
