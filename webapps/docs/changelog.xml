@@ -259,7 +259,7 @@
   <subsection name="Other">
     <changelog>
       <update>
-        Update to Commons Daemon 1.3.2. (markt)
+        Update to Commons Daemon 1.3.3. (markt)
       </update>
       <fix>
         <bug>66323</bug>: Move module start up parameters from
@@ -308,6 +308,18 @@
         non-Tomcat resources. Pull request <pr>569</pr> provided by Sébastien
         Deleuze. (markt)
       </scode>
+      <update>
+        Update the internal fork of Apache Commons BCEL to b015e90 (2022-11-28,
+        6.7.0-RC1). (markt)
+      </update>
+      <update>
+        Update the internal fork of Apache Commons Codec to ae32a3f (2022-11-29,
+        1.16-SNAPSHOT). (markt)
+      </update>
+      <update>
+        Update the internal fork of Apache Commons FileUpload to aa8eff6
+        (2022-11-29, 2.0-SNAPSHOT). (markt)
+      </update>
     </changelog>
   </subsection>
 </section>
