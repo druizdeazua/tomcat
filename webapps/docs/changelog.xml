@@ -104,7 +104,9 @@
   They eventually become mixed with the numbered issues (i.e., numbered
   issues do not "pop up" wrt. others).
 -->
-<section name="Tomcat 11.0.0-M1 (markt)" rtext="in development">
+<section name="Tomcat 11.0.0-M2 (markt)" rtext="in development">
+</section>
+<section name="Tomcat 11.0.0-M1 (markt)" rtext="release in progress">
   <subsection name="General">
     <changelog>
       <scode>
@@ -246,6 +248,11 @@
         <bug>66348</bug>: Update the JARs listed in the class loader
         documentation and note which ones are optional. (markt)
       </fix>
+      <fix>
+        Documentation. Replace references in the application developer's guide
+        to CVS with more general references to a source code control system.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="jdbc-pool">
@@ -276,8 +283,8 @@
         (markt)
       </add>
       <add>
-        Improvements to Japanese translations. Contributed by Shirayuking.
-        (markt)
+        Improvements to Japanese translations. Contributed by Shirayuking and
+        tak7iji. (markt)
       </add>
       <add>
         Improvements to Korean translations. (markt)
