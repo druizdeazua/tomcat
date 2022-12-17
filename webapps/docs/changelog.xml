@@ -105,12 +105,42 @@
   issues do not "pop up" wrt. others).
 -->
 <section name="Tomcat 11.0.0-M2 (markt)" rtext="in development">
+  <subsection name="Catalina">
+    <changelog>
+      <add>
+        Update the <code>ServletInputStream</code> and
+        <code>ServletOuputStream</code> classes in the Servlet API to align with
+        the recent updates in the Jakarta Servlet specification to support
+        reading and writing with <code>ByteBuffer</code>s. The changes also
+        clarified various aspects of the Servlet non-blocking API. (markt)
+      </add>
+      <fix>
+        <bug>66388</bug>: Correct a regression in the refactoring that replaced
+        the use of the <code>URL</code> constructors. The regression broke
+        lookups for resources that contained one or more characters in their
+        name that required escaping when used in a URI path. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Coyote">
     <changelog>
       <fix>
         Update Cookie parsing and handling to treat the quotes in a quoted
         cookie value as part of the value as required by RFC 6265 and explicitly
         clarified in RFC 6265bis. (markt)
+      </fix>
+      <add>
+        Add an RFC 8941 structured field parser. (markt)
+      </add>
+      <add>
+        Add a parser for the <code>priority</code> HTTP header field defined in
+        RFC 9218. (markt)
+      </add>
+      <fix>
+        When resetting an HTTP/2 stream because the final response has been
+        generated before the request has been fully read, use the HTTP/2 error
+        code <code>NO_ERROR</code> so that client does not discard the response.
+        Based on a suggestion by Lorenzo Dalla Vecchia. (markt)
       </fix>
     </changelog>
   </subsection>
